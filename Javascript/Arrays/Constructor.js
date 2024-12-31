@@ -10,7 +10,7 @@ function Person(name, age){
     return this.name + this.age;
 }
 
-const person1 = new Person("hassan", 22);
+const person1 = new Person("hassaan", 22);
 console.log(person1);
 console.log(Person("Ayan",22));
 
