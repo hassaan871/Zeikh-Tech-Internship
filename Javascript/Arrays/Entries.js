@@ -15,15 +15,16 @@
 // }
 // console.log(sum);
 
-const nums = [1,2,3,4];
+const nums = ["one","two","three","four"];
 const nums2 = new Array([5,6,7,8]);
 const list = nums.entries();
 let sum = 0;
-for(let x of list){
-    sum += x;
+for(let [index, value] of list){
+    console.log(`index: ${index}, value: ${value}`);
+    // console.log(value);
 }
 // console.log(sum);
-console.log(list);
+// console.log(list);
 
 // console.log('Type of sum: ',typeof sum);
 // console.log('Type of Nums: ',typeof nums);
