@@ -6,8 +6,6 @@ const atPosition = fruits.includes("Apple",2);
 // console.log(atPosition);
 
 
-
-
 const arr = ["a","b","c","d","e"];
 // const isThere = arr.includes("a",-2);
 const isThere = arr.includes("d",-2);
