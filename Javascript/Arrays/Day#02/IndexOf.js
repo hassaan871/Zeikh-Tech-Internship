@@ -5,8 +5,11 @@ const index2 = fruits.indexOf("Apple",2);
 // computed index = length of array + fromIndex = 6+(-2)=4 false
 const index3 = fruits.indexOf("Apple",-2);
 
-console.log(`index: ${index}`);
+console.log(fruits.indexOf("potato"));
+
+
+// console.log(`index: ${index}`);
 // console.log(index1);
 // console.log(index2);
 
-console.log(`index3: ${index3}`);
+// console.log(`index3: ${index3}`);
