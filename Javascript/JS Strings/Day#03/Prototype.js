@@ -22,4 +22,5 @@ const newIntern1 = new Intern("Abdul Rehman", '6 months', 'ReactJs');
 
 console.log(newIntern1.company);
 
+console.log(typeof Intern);
 
