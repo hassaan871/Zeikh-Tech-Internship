@@ -1,8 +1,8 @@
-let text = "Hassaan";
-// let charCodeAt = text.charCodeAt();
-// let charCodeAt = text.charCodeAt(0);
-// let charCodeAt = text.charCodeAt(1);
-let charCodeAt = text.charCodeAt(text.length-1);
+const text = "Hassaan";
+// const charCodeAt = text.charCodeAt();
+// const charCodeAt = text.charCodeAt(0);
+// const charCodeAt = text.charCodeAt(1);
+const charCodeAt = text.charCodeAt(text.length-1);
 
 
 // doesn't support negative indexing 
