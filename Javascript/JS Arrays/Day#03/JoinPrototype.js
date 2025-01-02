@@ -8,7 +8,7 @@ Array.prototype.myJoin = function(str){
     //     this[i+1] = `${this[i]}${str}${this[i+1]}`;
     // }
     // return this[this.length-1];
-    
+
     const myArr = structuredClone(this);
     for (let i = 0; i < myArr.length-1; i++) {
         let arg = str === undefined?
@@ -16,6 +16,7 @@ Array.prototype.myJoin = function(str){
         myArr[i+1] = `${myArr[i]}${str}${myArr[i+1]}`;
     }
     return myArr[myArr.length-1];
+    
 }
 
 console.log(fruits.myJoin());
