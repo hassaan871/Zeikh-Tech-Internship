@@ -1,6 +1,6 @@
 const char = '';
 const charArr = [];
-let name = "Hassaan";
+const name = "Hassaan";
 // console.log(name.charCodeAt(0));
 
 console.log("\nUnicode: ");
