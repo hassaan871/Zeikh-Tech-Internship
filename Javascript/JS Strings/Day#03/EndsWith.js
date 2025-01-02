@@ -1,0 +1,10 @@
+const text = "Hello World";
+// const result = text.endsWith("World");
+// const result = text.endsWith(" World");
+// const result = text.endsWith("ld");
+// const result = text.endsWith("Hello World");
+// const result = text.endsWith("H");
+// const result = text.endsWith("H",0);
+// const result = text.endsWith("H",1);
+const result = text.endsWith("d",11);
+console.log(result);
