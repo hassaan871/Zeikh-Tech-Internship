@@ -1,7 +1,7 @@
 // function func() {
 //     var b 
 //     console.log({b});
-    
+
 //     b =22
 
 // }
@@ -20,7 +20,7 @@
 // func()
 
 // const myfunc = () => {
-    
+
 // }
 
 
@@ -30,16 +30,35 @@
 // }
 // console.log(a);
 
+// function z() {
+//     var b = 20;
+//     return function x() {
+//         var a = 7;
+//         console.log("Testing");
+//         return function y() {
+//             console.log(`${a}, ${b}`);
+//             console.log("Testing Again");
+//         }
+//         // a = 100;
+//     }
+// }
 
-function x() {
-    var a = 7;
+function x(){
+    var a = 10;
     function y(){
-        console.log(a);
+        var b = 20;
+        function z() {
+            console.log(`${a}, ${b}`);
+        }
+        z();
     }
-    a = 100;
-    return y;
+    y();
 }
+x();
 
-var z = x();
-console.log(z);
-z();
+// var c = z();
+// console.log(c);
+// c();
+// var z = x();
+// console.log(z);
+// z();
