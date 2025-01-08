@@ -44,15 +44,22 @@
 // }
 
 function x(){
-    var a = 10;
-    function y(){
-        var b = 20;
-        function z() {
-            console.log(`${a}, ${b}`);
-        }
-        z();
-    }
-    y();
+    const result = setTimeout(()=>{console.log("setTimeout")}, 1000);
+    const result1 = setTimeout(()=>{console.log("setTimeout")}, 1000);
+    console.dir({result,result1});
+    console.log(typeof result);
+    clearTimeout(result)
+    // var a = 10;
+    // function y(){
+    //     var b = 20;
+    //     function z() {
+    //         console.log(`${a}, ${b}`);
+    //     }
+    //     z();
+    // }
+    // y();
+    // const x = 100;
+    // return x++;
 }
 x();
 
