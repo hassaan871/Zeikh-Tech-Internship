@@ -24,8 +24,22 @@
 // }
 
 
-{
-    let a = 10;
+// {
+//     let a = 10;
 
+// }
+// console.log(a);
+
+
+function x() {
+    var a = 7;
+    function y(){
+        console.log(a);
+    }
+    a = 100;
+    return y;
 }
-console.log(a);
+
+var z = x();
+console.log(z);
+z();
