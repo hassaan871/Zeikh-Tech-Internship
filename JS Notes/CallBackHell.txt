@@ -1,0 +1,20 @@
+js single threaded synchronouse programming language and can do 1 thing at a time because it has a single call stack.
+
+Call backs: to do asynchronous things in js.(super powerful way of handling async operations in js).
+
+0. Callback hell. (one callback inside another callback inside another callback).Unreadable & unmaintainable.
+(pyramid of doom)
+
+1. Inversion of control.(is when you lose the control of your code when using callback).
+
+const cart = ["shoes", "pants", "kurta"];
+
+api.createOrder(cart, function(){
+	api.proceedToPayment();
+});
+
+whenever we have this callback function and we pass it to another function, we are given the control of our peace of written code to someother code and we dont know whats happening behind the scene and whether the function will execute our code or not.
+
+we are blindly trusting the createOrder Api that it will create the order and will 
+
+
