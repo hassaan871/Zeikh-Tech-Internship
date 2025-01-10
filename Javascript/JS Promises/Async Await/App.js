@@ -27,18 +27,37 @@
 const myName =  new Promise(function (resolve, reject){
     setTimeout(function (){
         resolve("Hassaan")
-    }, 2000);
+    }, 4000);
+})
+
+const cast =  new Promise(function (resolve, reject){
+    setTimeout(function (){
+        resolve("RJ")
+    // }, 1000);
+    }, 10000);
 })
 
 async function callPrmsAsync() {
+    console.log("Before Await...");
+
     const name = await myName;
+    console.log("First Promise Resolved");
     console.log(name);
+
+    // const name2 = await myName;
+    // console.log("Second Promise Resolved");
+    // console.log(name2);
+
+    const myCast = await cast;
+    console.log("Second Promise Resolved");
+    console.log(myCast);
 }
 
 function callPrms() {
     const name = myName;
+    console.log("Promise Not Resolved");
     console.log(name);
 }
 
 callPrmsAsync();
-callPrms();
+// callPrms();
