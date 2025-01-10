@@ -30,6 +30,12 @@ const myName =  new Promise(function (resolve, reject){
     }, 4000);
 })
 
+// const myName2 =  new Promise(function (resolve, reject){
+//     setTimeout(function (){
+//         resolve("Hass...")
+//     }, 4000);
+// })
+
 const cast =  new Promise(function (resolve, reject){
     setTimeout(function (){
         resolve("RJ")
@@ -53,6 +59,10 @@ async function callPrmsAsync() {
     console.log(myCast);
 }
 
+function Testing() {
+    console.log("Testing...");
+}
+
 function callPrms() {
     const name = myName;
     console.log("Promise Not Resolved");
@@ -61,3 +71,6 @@ function callPrms() {
 
 callPrmsAsync();
 // callPrms();
+Testing();
+
+
