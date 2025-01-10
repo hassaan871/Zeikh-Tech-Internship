@@ -28,17 +28,54 @@ const person = {
         // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
         console.log(`${this.firstName} ${this.lastName}`);
         
+    },
+    simpleFunction: function(){
+        console.log(this);
+        
+    },
+    arrowFunction: () => {
+        console.log(this);   
     }
 }
+
+function Obj(){
+
+    const a ='a';
+    const person = {
+        firstName: "Hassaan",
+        lastName: "Adil",
+        fullName: function(city, country){
+            // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
+            console.log(`${this.firstName} ${this.lastName}`);
+            
+        },
+        simpleFunction: function(){
+            console.log(this);
+            
+        },
+        arrowFunction: () => {
+            console.log(this);   
+        }
+    }
+
+    return person;
+}
+
+
+const obj = Obj();
+obj.arrowFunction();
+// person.simpleFunction();
 
 const person2 = {
     firstName: "Ammar",
     lastName: "Rizwan"
 }
 
+
+
 // person.fullName.apply(person2, ["Lahore", "Pakistan"])
 const fullname = person.fullName.bind(person2);
-fullname();
+// fullname();
 
 // function a(){
 //     console.log(this);
