@@ -49,4 +49,3 @@ arr2[0].name = "Hassaan"
 console.log({arr1,arr2});
 
 let a;
-
