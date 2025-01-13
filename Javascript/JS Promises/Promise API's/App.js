@@ -17,14 +17,16 @@ const p3 = new Promise((resolve, reject)=>{
     },5000);
 })
 
-async function funcCall() {
+async function funcToCall() {
     try {
-        const result = await Promise.all([p1, p2, p3]);
+        // const result = await Promise.all([p1, p2, p3]);
+        // const result = await Promise.allSettled([p1, p2, p3]);
+        const result = await Promise.race([p1, p2, p3]);
         console.log(result);
     } catch (error) {
-        console.log("Error: ",error);
+        console.error("Error: ",error);
     }
 }
 
-funcCall();
+funcToCall();
 // console.log(funcCall());
