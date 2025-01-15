@@ -1,84 +1,109 @@
-// "use strict";
+// // "use strict";
 
-// console.log(this);
+// // console.log(this);
 
-// (function (){
-//     // this value depends on strict and non strict mode
-//     console.log(this);
-// })()
+// // (function (){
+// //     // this value depends on strict and non strict mode
+// //     console.log(this);
+// // })()
 
-// const student = {
-//     name: "Hassaan",
-//     printName: function(){
-//         console.log(this.name);
+// // const student = {
+// //     name: "Hassaan",
+// //     printName: function(){
+// //         console.log(this.name);
+// //     }
+// // }
+
+// // const student2 = {
+// //     name: "Ammar"
+// // }
+
+// // student.printName();
+// // student.printName.call(student2);
+
+// const person = {
+//     firstName: "Hassaan",
+//     lastName: "Adil",
+//     fullName: function(city, country){
+//         // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
+//         console.log(`${this.firstName} ${this.lastName}`);
+        
+//     },
+//     simpleFunction: function(){
+//         console.log(this);
+        
+//     },
+//     arrowFunction: () => {
+//         console.log(this);   
 //     }
 // }
 
-// const student2 = {
-//     name: "Ammar"
+// function Obj(){
+
+//     const a ='a';
+//     const person = {
+//         firstName: "Hassaan",
+//         lastName: "Adil",
+//         fullName: function(city, country){
+//             // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
+//             console.log(`${this.firstName} ${this.lastName}`);
+            
+//         },
+//         simpleFunction: function(){
+//             console.log(this);
+            
+//         },
+//         arrowFunction: () => {
+//             console.log(this);   
+//         }
+//     }
+
+//     return person;
 // }
 
-// student.printName();
-// student.printName.call(student2);
 
-const person = {
-    firstName: "Hassaan",
-    lastName: "Adil",
-    fullName: function(city, country){
-        // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
-        console.log(`${this.firstName} ${this.lastName}`);
-        
-    },
-    simpleFunction: function(){
-        console.log(this);
-        
-    },
-    arrowFunction: () => {
-        console.log(this);   
-    }
-}
-
-function Obj(){
-
-    const a ='a';
-    const person = {
-        firstName: "Hassaan",
-        lastName: "Adil",
-        fullName: function(city, country){
-            // console.log(`${this.firstName} ${this.lastName} from ${city}, ${country}`);
-            console.log(`${this.firstName} ${this.lastName}`);
-            
-        },
-        simpleFunction: function(){
-            console.log(this);
-            
-        },
-        arrowFunction: () => {
-            console.log(this);   
-        }
-    }
-
-    return person;
-}
-
-
-const obj = Obj();
-obj.arrowFunction();
-// person.simpleFunction();
+// const obj = Obj();
+// obj.arrowFunction();
+// // person.simpleFunction();
 
 const person2 = {
     firstName: "Ammar",
-    lastName: "Rizwan"
+    lastName: "Rizwan",
+    nested: function(){
+        // console.log("Outer",this);
+        
+        // function
+         x=()=>{
+            y=()=> {
+
+                console.log("Nested",this);
+            }
+            y();
+        }
+        x();
+    }
 }
+person2.nested();
 
 
 
-// person.fullName.apply(person2, ["Lahore", "Pakistan"])
-const fullname = person.fullName.bind(person2);
-// fullname();
+// // person.fullName.apply(person2, ["Lahore", "Pakistan"])
+// const fullname = person.fullName.bind(person2);
+// // fullname();
 
-// function a(){
-//     console.log(this);
+// // function a(){
+// //     console.log(this);
     
+// // }
+// // a();
+
+// "use strict";
+
+// function x(){
+//     function y(){
+//         console.log(this);
+//     }
+//     y();
 // }
-// a();
+
+// x();
