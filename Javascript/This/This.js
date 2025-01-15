@@ -18,12 +18,18 @@ const obj = {
     },
     y: ()=>{
         console.log("Arrow Function: ",this);
+    },
+    z: function () {
+        const a = ()=>{
+            console.log("Arrow fn inside normal fn: ", this);
+        };
+        a();
     }
 }
 
-obj.x();
-obj.y();
-
+// obj.x();
+// obj.y();
+obj.z();
 
 
 const student1 = {
