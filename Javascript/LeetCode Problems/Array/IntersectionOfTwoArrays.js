@@ -27,7 +27,7 @@
  */
 const intersection = function (nums1, nums2) {
     const seen = {}
-    const added = {}
+    // const added = {}
     const intersection = [];
 
     for (const num1 of nums1) seen[num1] = 1
@@ -44,16 +44,16 @@ const intersection = function (nums1, nums2) {
 
     return intersection
 
-    for (let i = 0; i < nums1.length; i++) {
-        for (let j = 0; j < nums2.length; j++) {
-            if (nums1[i] === nums2[j] && !added[nums1]) {
-                added[nums1] = true
-                intersection.push(nums1[i]);
-            }
-        }
-    }
+    // for (let i = 0; i < nums1.length; i++) {
+    //     for (let j = 0; j < nums2.length; j++) {
+    //         if (nums1[i] === nums2[j] && !added[nums1]) {
+    //             added[nums1] = true
+    //             intersection.push(nums1[i]);
+    //         }
+    //     }
+    // }
 
-    return (intersection);
+    // return (intersection);
 };
 
 
