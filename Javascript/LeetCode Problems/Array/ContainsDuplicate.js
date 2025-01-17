@@ -3,16 +3,16 @@
  * @return {boolean}
  */
 var containsDuplicate = function (nums) {
+    nums.sort((x,y)=> x-y)
+    let result = false;
 
-    for (let i = 0; i < nums.length - 1; i++) {
-        for (let j = 1; j < nums.length; j++) {
-            if (nums[i] === nums[j] && i !== j) {
-                return true;
-            }
+    nums.forEach((element, index)=>{
+        if(element === nums[index+1]){
+            result = true;
         }
-    }
+    })
 
-    return false;
+    return result;
 };
 
 const nums = [1,2,3,1];
