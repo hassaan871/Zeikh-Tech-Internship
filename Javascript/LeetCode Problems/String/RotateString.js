@@ -8,24 +8,30 @@
  * @return {boolean}
  */
 var rotateString = function(s, goal) {
-
-    let strS = structuredClone(s);
-    let strGoal = structuredClone(goal);
-    let s1 = strS.split("").sort().join("");
-    let s2 = strGoal.split("").sort().join("");
-
-    if (s1 === s2 ) {
-        return true
-    } 
+    if(s === goal){
+        console.log("In If Statement");
+        return true;
+    }
+    for(let i = 0; i<goal.length; i++){
+        goal = goal.split("");
+        goal.unshift(goal[goal.length-1]);
+        goal.pop();
+        goal = goal.join("");       
+        
+        if(s === goal){
+            return true;
+        }
+    }
 
     return false;
 };
 
 // const s = "abcde";
+// // const goal = "abcde";
 // const goal = "cdeab";
 
-const s = "abcdef";
-const goal = "cdeab";
+let s = "abcdef";
+let goal = "cdeab";
 const result = rotateString(s, goal);
 
 console.log(result);

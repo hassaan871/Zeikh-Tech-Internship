@@ -3,7 +3,7 @@ class employee{
         this.name = name;
         console.log("Employee, ",name);
     }    
-    function info(){
+    info(){
         console.log("Employee here");
     }
 }
