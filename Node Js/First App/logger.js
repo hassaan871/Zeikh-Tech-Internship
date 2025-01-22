@@ -1,12 +1,13 @@
 // var a=; //Tried to see module wrapper function.
 
-console.log("File name: ",__filename);
-console.log("Directory name: ",__dirname);
+
 
 const url = 'https://api.github.com/users/hassaan871';
 
-function log(message){
+function log(message) {
     console.log(message);
+    console.log("File name: ", __filename);
+    console.log("Directory name: ", __dirname);
 }
 
 module.exports.log = log;
