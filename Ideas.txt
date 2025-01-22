@@ -1,0 +1,4 @@
+just make an api that sends the
+ totalMemory and the freeMemory using the OS module
+ deploy the free api(and check the memeory of the 
+ cloud)
