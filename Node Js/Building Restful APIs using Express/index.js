@@ -8,16 +8,11 @@ const courses = [
 ];
 app.use(express.json());
 
-app.put('/api/updateCourse/:id',(req, res)=>{
+app.put('/api/course/:id',(req, res)=>{
     const course = courses.find((element) => parseInt(req.params.id) === element.id);
-    if(!course){
-        res.status(404).send("Course Not found");
-        return;
-    }
-    if(req.body.course < 1 || !req.body.course){
-        res.status(400).send("course is required with length greater than 1");
-        return;
-    }
+    if(!course) return res.status(404).send("Course Not found");
+
+    if(req.body.course < 1 || !req.body.course) return res.status(400).send("course is required with length greater than 1");
   
     for(let i=0; i<courses.length; i++){
         if(courses[i].id === course.id){
@@ -29,16 +24,12 @@ app.put('/api/updateCourse/:id',(req, res)=>{
     res.send(courses);
 });
 
-app.post('/api/updateCourse/:id',(req, res)=>{
+app.post('/api/course/:id',(req, res)=>{
     const course = courses.find((element) => parseInt(req.params.id) === element.id);
-    if(!course){
-        res.status(404).send("Course Not found");
-        return;
-    }
-    if(req.body.course < 1 || !req.body.course){
-        res.status(400).send("course is required with length greater than 1");
-        return;
-    }
+    if(!course) return res.status(404).send("Course Not found");
+        
+    if(req.body.course < 1 || !req.body.course) return res.status(400).send("course is required with length greater than 1");
+        
     courses.forEach((element)=>{
         if(element.id === course.id){
             element.course = req.body.course;
@@ -49,14 +40,13 @@ app.post('/api/updateCourse/:id',(req, res)=>{
 });
 
 app.post('/api/courses',(req, res)=>{
-    if(req.body.course <1 || !req.body.course){
-        res.status(400).send("Course is required and length greater than 1.");
-        return;
-    }
+    if(req.body.course <1 || !req.body.course) return res.status(400).send("Course is required and length greater than 1.");
+        
     const course = {
         id: courses.length+1,
         course: req.body.course
     };
+    
     courses.push(course);
     res.send(course);
 })
@@ -66,7 +56,7 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/api/courses', (req, res)=>{
-    res.send([1,2,3])
+    res.send(courses);
 });
 
 app.get('/api/posts/:year/:month',(req, res)=>{
