@@ -8,6 +8,46 @@ const courses = [
 ];
 app.use(express.json());
 
+app.put('/api/updateCourse/:id',(req, res)=>{
+    const course = courses.find((element) => parseInt(req.params.id) === element.id);
+    if(!course){
+        res.status(404).send("Course Not found");
+        return;
+    }
+    if(req.body.course < 1 || !req.body.course){
+        res.status(400).send("course is required with length greater than 1");
+        return;
+    }
+  
+    for(let i=0; i<courses.length; i++){
+        if(courses[i].id === course.id){
+            courses[i].course = req.body.course;        
+            break;
+        }
+    }
+
+    res.send(courses);
+});
+
+app.post('/api/updateCourse/:id',(req, res)=>{
+    const course = courses.find((element) => parseInt(req.params.id) === element.id);
+    if(!course){
+        res.status(404).send("Course Not found");
+        return;
+    }
+    if(req.body.course < 1 || !req.body.course){
+        res.status(400).send("course is required with length greater than 1");
+        return;
+    }
+    courses.forEach((element)=>{
+        if(element.id === course.id){
+            element.course = req.body.course;
+        }
+    });
+
+    res.send(courses);
+});
+
 app.post('/api/courses',(req, res)=>{
     if(req.body.course <1 || !req.body.course){
         res.status(400).send("Course is required and length greater than 1.");
