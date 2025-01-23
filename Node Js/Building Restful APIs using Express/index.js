@@ -6,10 +6,13 @@ const courses = [
     {id:2, course:"SE"},
     {id:3, course:"IT"}
 ];
-
 app.use(express.json());
 
 app.post('/api/courses',(req, res)=>{
+    if(req.body.course <1 || !req.body.course){
+        res.status(400).send("Course is required and length greater than 1.");
+        return;
+    }
     const course = {
         id: courses.length+1,
         course: req.body.course
