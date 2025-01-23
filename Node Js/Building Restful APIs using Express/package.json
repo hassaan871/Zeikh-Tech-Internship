@@ -1,0 +1,14 @@
+{
+  "name": "building-restful-apis-using-express",
+  "version": "1.0.0",
+  "description": "code with mosh nodejs course building restful api using express module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hassaan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
