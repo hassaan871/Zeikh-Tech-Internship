@@ -1,4 +1,6 @@
 const express = require('express');
+const logger = require('./middlewares/logger');
+const authenticator = require('./middlewares/authenticator');
 const app = express();
 
 const courses = [
@@ -6,7 +8,12 @@ const courses = [
     {id:2, course:"SE"},
     {id:3, course:"IT"}
 ];
+
 app.use(express.json());
+
+app.use(logger);
+
+app.use(authenticator);
 
 app.put('/api/course/:id',(req, res)=>{
     const course = courses.find((element) => parseInt(req.params.id) === element.id);
@@ -46,7 +53,7 @@ app.post('/api/courses',(req, res)=>{
         id: courses.length+1,
         course: req.body.course
     };
-    
+
     courses.push(course);
     res.send(course);
 })
