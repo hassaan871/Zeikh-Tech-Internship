@@ -7,6 +7,17 @@ const courses = [
     {id:3, course:"IT"}
 ];
 
+app.use(express.json());
+
+app.post('/api/courses',(req, res)=>{
+    const course = {
+        id: courses.length+1,
+        course: req.body.course
+    };
+    courses.push(course);
+    res.send(course);
+})
+
 app.get('/', (req, res)=>{
     res.send("Root...")
 });
