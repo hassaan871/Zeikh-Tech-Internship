@@ -7,7 +7,6 @@ var missingNumber = function(nums) {
         acc[curr] = true
         return acc
     }, {});
-
     
     for (let num = 0; num <= nums.length; num++) {
         if(!seen[num]) return num

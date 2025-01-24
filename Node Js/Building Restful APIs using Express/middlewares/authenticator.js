@@ -1,7 +1,7 @@
 
-const authenticator = (req, res, next)=>{
+const authenticator = (req, res, next) => {
     console.log("Authenticatingg.....")
-    
+
     next();
 }
 
