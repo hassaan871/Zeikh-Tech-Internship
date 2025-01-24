@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const logger = require('./middlewares/logger');
 const authenticator = require('./middlewares/authenticator');
+const validateCourse = require('./middlewares/course');
 const app = express();
 
 const courses = [
@@ -63,8 +64,8 @@ app.post('/api/course/:id', (req, res) => {
     res.send(courses);
 });
 
-app.post('/api/courses', (req, res) => {
-    if (req.body.course < 1 || !req.body.course) return res.status(400).send("Course is required and length greater than 1.");
+app.post('/api/courses', validateCourse,(req, res) => {
+    // if (req.body.course < 1 || !req.body.course) return res.status(400).send("Course is required and length greater than 1.");
 
     const course = {
         id: courses.length + 1,
