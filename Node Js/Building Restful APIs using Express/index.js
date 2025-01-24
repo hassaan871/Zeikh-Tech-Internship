@@ -1,4 +1,6 @@
 const express = require('express');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const logger = require('./middlewares/logger');
 const authenticator = require('./middlewares/authenticator');
 const app = express();
@@ -9,12 +11,17 @@ const courses = [
     { id: 3, course: "IT" }
 ];
 
+// express builtin middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use(logger);
+app.use(morgan('tiny'));
+// third party middlewares
+app.use(helmet());
 
+// custom middlewares
+app.use(logger);
 app.use(authenticator);
 
 app.put('/api/course/:id', (req, res) => {
