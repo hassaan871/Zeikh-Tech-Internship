@@ -3,21 +3,31 @@
  * @return {number}
  */
 var missingNumber = function(nums) {
-    let temp;
-    for(let i=0; i<nums.length; i++){
-        for(let j=0; j<nums.length; j++){
-            if(nums[i]<nums[j]){
-                temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-            }
-        }
+    const seen = nums.reduce((acc,curr) => {
+        acc[curr] = true
+        return acc
+    }, {});
+
+    
+    for (let num = 0; num <= nums.length; num++) {
+        if(!seen[num]) return num
     }
-  for(let i=0; i<nums.length; i++){
-    if(i === nums[i]) continue;
-    return i;
-  } 
-  return nums.length;
+
+//     let temp;
+//     for(let i=0; i<nums.length; i++){
+//         for(let j=0; j<nums.length; j++){
+//             if(nums[i]<nums[j]){
+//                 temp = nums[i];
+//                 nums[i] = nums[j];
+//                 nums[j] = temp;
+//             }
+//         }
+//     }
+//   for(let i=0; i<nums.length; i++){
+//     if(i === nums[i]) continue;
+//     return i;
+//   } 
+//   return nums.length;
 };
 
 let nums = [9,6,4,2,3,5,7,0,1];
