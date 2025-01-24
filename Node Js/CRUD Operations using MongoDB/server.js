@@ -26,4 +26,11 @@ async function createCourse() {
     console.log(result);
 }
 
-createCourse();
+// createCourse();
+
+async function getCourses() {
+    const courses = await Course.find({author: "code with mosh"});
+    console.log(courses);
+}
+
+getCourses();
