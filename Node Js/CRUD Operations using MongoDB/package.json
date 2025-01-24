@@ -1,0 +1,16 @@
+{
+  "name": "crud-operations-using-mongodb",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Hassaan",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongoose": "^8.9.5",
+    "nodemon": "^3.1.9"
+  }
+}
