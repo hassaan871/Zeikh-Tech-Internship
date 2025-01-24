@@ -16,7 +16,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use(morgan('tiny'));
+// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+// console.log(`app: ${app.get('env')}`);
+
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny'));
+    console.log("Morgon Enabled...");    
+}
+
 // third party middlewares
 app.use(helmet());
 
