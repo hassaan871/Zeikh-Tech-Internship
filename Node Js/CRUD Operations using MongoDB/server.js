@@ -39,7 +39,7 @@ async function createCourse() {
 // in 
 // nin (not in)
 
-console.log('================');
+// console.log('================');
 
 
 async function getCourses() {
@@ -49,4 +49,21 @@ async function getCourses() {
     console.log(courses);
 }
 
-getCourses();
+// getCourses();
+
+async function updateCourse(id){
+    const course = await Course.findById(id);
+
+    if(!course) return;
+
+    course.set({
+        author: "Max schawzmuller",
+        name: "Acade mind youtube"
+    });
+
+    const result = await course.save();
+    console.log(result);
+    
+}
+
+updateCourse('679727a029b02e0443a0befa');
