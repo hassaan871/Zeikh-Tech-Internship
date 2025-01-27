@@ -39,8 +39,13 @@ async function createCourse() {
 // in 
 // nin (not in)
 
+console.log('================');
+
+
 async function getCourses() {
-    const courses = await Course.find({price: {$gte : 10, $lte: 20}});
+    // const courses = await Course.find({author: /^acade/i});
+    // const courses = await Course.find({author: /mind$/i});
+    const courses = await Course.find({author: /.*mind.*/i});
     console.log(courses);
 }
 
