@@ -89,4 +89,4 @@ async function removeCourse(id){
     console.log(result);
 }
 
-removeCourse('679727a029b02e0443a0befa');
+// removeCourse('679727a029b02e0443a0befa');
