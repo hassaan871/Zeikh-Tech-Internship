@@ -5,7 +5,7 @@ mongoose.connect('mongodb://localhost/playground')
     .catch((err)=>{ console.log("Error connecting mongodb...",err)});
 
 const courseSchema = new mongoose.Schema({
-    name: String,
+    name: {type: String, required: true},
     author: String,
     price: Number,
     tags: [String],
@@ -17,18 +17,23 @@ const Course = mongoose.model('Course',courseSchema);
 
 async function createCourse() {
     const course = new Course({
-        name: 'Reactjs Course',
+        // name: 'Reactjs Course',
         author: 'Acade mind',
         price: 8,
         tags: ['oop','js'],
         isPublished: true
     });
 
-    const result = await course.save();
-    console.log(result);
+    try{
+        const result = await course.save();
+        console.log(result);
+    }catch(ex){
+        console.log(ex.message);
+        
+    }
 }
 
-// createCourse();
+createCourse();
 
 // eq (equal to)
 // ne (not equal to)
