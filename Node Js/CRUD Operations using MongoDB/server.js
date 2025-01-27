@@ -81,4 +81,12 @@ async function updateFirst(id){
     
 }
 
-updateFirst('679727a029b02e0443a0befa');
+// updateFirst('679727a029b02e0443a0befa');
+
+
+async function removeCourse(id){
+    const result = await Course.deleteOne({_id: id});
+    console.log(result);
+}
+
+removeCourse('679727a029b02e0443a0befa');
