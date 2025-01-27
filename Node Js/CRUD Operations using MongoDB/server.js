@@ -5,9 +5,24 @@ mongoose.connect('mongodb://localhost/playground')
     .catch((err)=>{ console.log("Error connecting mongodb...",err)});
 
 const courseSchema = new mongoose.Schema({
-    name: {type: String, required: true},
+    name: {
+        type: String, 
+        required: true,
+        minLength: 5,
+        maxLength: 255
+    },
+    category: {
+        type: String,
+        required: true,
+        enum: ['web', 'mobile', 'network']
+    },
     author: String,
-    price: Number,
+    price: {
+        type: Number,
+        min:10,
+        max:200,
+        required: function() { return this.isPublished; }
+    },
     tags: [String],
     date: {type: Date , default: Date.now},
     isPublished: Boolean
