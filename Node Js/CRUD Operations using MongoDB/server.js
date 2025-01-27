@@ -21,7 +21,9 @@ const courseSchema = new mongoose.Schema({
         type: Number,
         min:1,
         max:200,
-        required: function() { return this.isPublished; }
+        required: function() { return this.isPublished; },
+        get: v => Math.round(v), //custom getter function
+        set: v => Math.round(v)  //custom setter function
     },
     tags: {
         type: [String],
@@ -43,8 +45,8 @@ async function createCourse() {
         name: 'Reactjs Course',
         author: 'Acade mind',
         category: 'web',
-        price: 8,
-        tags: null,
+        price: 8.7,
+        tags: 'backend',
         isPublished: true
     });
 
@@ -57,28 +59,12 @@ async function createCourse() {
     }
 }
 
-createCourse();
-
-// eq (equal to)
-// ne (not equal to)
-// gt (greater than)
-// gte (greater than equal to)
-// lt (less than)
-// lte (less than equal to)
-// in 
-// nin (not in)
-
-// console.log('================');
-
-
-async function getCourses() {
-    // const courses = await Course.find({author: /^acade/i});
-    // const courses = await Course.find({author: /mind$/i});
-    const courses = await Course.find({author: /.*mind.*/i});
-    console.log(courses);
+async function getCourses(id) {
+     const course = await Course.findOne({_id: id}).select({price: 1}).lean(false);
+    console.log(course);
 }
 
-// getCourses();
+// getCourses('679727782b2f04bc90284201');
 
 async function updateCourse(id){
     const course = await Course.findById(id);
