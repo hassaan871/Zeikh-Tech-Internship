@@ -66,4 +66,19 @@ async function updateCourse(id){
     
 }
 
-updateCourse('679727a029b02e0443a0befa');
+// updateCourse('679727a029b02e0443a0befa');
+
+
+async function updateFirst(id){
+    const result = await Course.updateOne({_id: id},{
+        $set: {
+            author: 'Mosh',
+            isPublished: false
+        }
+    });
+
+    console.log(result);
+    
+}
+
+updateFirst('679727a029b02e0443a0befa');
