@@ -19,11 +19,19 @@ const courseSchema = new mongoose.Schema({
     author: String,
     price: {
         type: Number,
-        min:10,
+        min:1,
         max:200,
         required: function() { return this.isPublished; }
     },
-    tags: [String],
+    tags: {
+        type: [String],
+        validate: {
+            validator: function(v) {
+                return v && v.length > 0;
+            },
+            message: "A course should have at least one tag."
+        }
+    },
     date: {type: Date , default: Date.now},
     isPublished: Boolean
 });
@@ -32,10 +40,11 @@ const Course = mongoose.model('Course',courseSchema);
 
 async function createCourse() {
     const course = new Course({
-        // name: 'Reactjs Course',
+        name: 'Reactjs Course',
         author: 'Acade mind',
+        category: 'web',
         price: 8,
-        tags: ['oop','js'],
+        tags: null,
         isPublished: true
     });
 
