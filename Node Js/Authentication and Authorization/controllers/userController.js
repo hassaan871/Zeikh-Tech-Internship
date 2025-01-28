@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const User = require('../models/userModel');
 
@@ -20,7 +21,8 @@ const userSignUpController = async (req, res) => {
 }
 
 const userLoginController = async (req, res) => {
-    res.send(true);
+    const token = jwt.sign({_id: req.user._id}, 'jwtPrivateKey');
+    res.send(token);
 }
 
 module.exports = {

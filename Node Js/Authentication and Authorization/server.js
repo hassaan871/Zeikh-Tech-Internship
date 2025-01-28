@@ -1,11 +1,13 @@
-const express = require('express');
-const app = express();
 const userRoutes = require('./routes/userRoutes');
 const connectDB = require('./config/db');
-
-const PORT = process.env.PORT || 8000;
+const express = require('express');
+const dotenv = require('dotenv');
 
 connectDB();
+dotenv.config();
+const PORT = process.env.PORT || 8000;
+
+const app = express();
 
 //Built-in Express Middlewares
 app.use(express.json());

@@ -23,6 +23,7 @@ async function invalidUserMiddleware(req, res, next){
     const user = await User.findOne({ email: req.body.email });
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!user || !validPassword) return res.status(400).send("Invalid email or password!");
+    req.user = user;
     next();
 }
 
