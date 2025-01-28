@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const User = require('../models/userModel');
 
-const userSignUpController = async (req, res) => {
+const userController = async (req, res) => {
     const user = new User(
         _.pick(req.body, ['name','email','password'])
     //     {
@@ -19,11 +19,4 @@ const userSignUpController = async (req, res) => {
     return res.send(_.pick(user, ['_id','name','email']));
 }
 
-const userLoginController = (req, res) => {
-    
-}
-
-module.exports = {
-    userSignUpController,
-    userLoginController
-};
+module.exports = userController;
