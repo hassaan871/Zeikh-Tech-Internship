@@ -1,6 +1,7 @@
 const {validateUser, validateLoginUser} = require('../validations/validateUser');
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 function validateUserMiddleware(req, res, next) {
     const { error } = validateUser(req.body);
@@ -27,9 +28,25 @@ async function invalidUserMiddleware(req, res, next){
     next();
 }
 
+function auth(req, res, next){
+    const token = req.header('x-auth-token');
+    if(!token) return res.status(401).send("Access denied. No token provided!");
+
+    try{
+        const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
+        req.user = decoded;
+        next();
+    }catch(exp){
+        return res.status(400).send("Invalid Token");
+    }
+
+
+}
+
 module.exports = {
     validateUserMiddleware,
     registeredUserMiddleware,
     validateLoginUserMiddleware,
-    invalidUserMiddleware
+    invalidUserMiddleware,
+    auth
 }

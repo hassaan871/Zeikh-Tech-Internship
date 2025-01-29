@@ -1,4 +1,5 @@
 const userRoutes = require('./routes/userRoutes');
+const moviesRoutes = require('./routes/moviesRoutes');
 const connectDB = require('./config/db');
 const express = require('express');
 const dotenv = require('dotenv');
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use('/api', userRoutes);
+app.use('/api', moviesRoutes);
 
 app.listen(PORT, () => {
     console.log(`server running on PORT ${PORT}`);
