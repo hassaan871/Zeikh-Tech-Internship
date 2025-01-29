@@ -5,7 +5,6 @@ const user = new mongoose.Schema({
     username:{
         type: String,
         required: true,
-        // minlength: 5,
         unique: true
     },
     email:{
@@ -16,7 +15,6 @@ const user = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        minlength:5
     },
     isAdmin: {
         type: Boolean,

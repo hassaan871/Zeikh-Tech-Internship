@@ -14,7 +14,7 @@ const userSignup = async (req, res) => {
         user.password = await bcrypt.hash(user.password, salt);
     
         await user.save();
-        return res.status(201).header('x-auth-token',user.generateAuthToken()).send({
+        return res.status(201).header('x-auth-token',user.generateAuthToken()).json({
             id: user._id,
             username: user.username,
             email: user.email,
