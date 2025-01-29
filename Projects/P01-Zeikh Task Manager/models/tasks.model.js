@@ -9,13 +9,10 @@ const task = new mongoose.Schema({
     },
     heading: {
         type: String,
-        minlength: 5,
-        maxlength:255,
         required: true,
     },
     description: {
         type:String,
-        minlength:10,
         required: true
     },
     isCompleted: {
