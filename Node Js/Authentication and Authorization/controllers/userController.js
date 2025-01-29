@@ -17,11 +17,12 @@ const userSignUpController = async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt);
 
     await user.save();
-    return res.send(_.pick(user, ['_id','name','email']));
+    const token = user.generateAuthToken();
+    return res.header('x-auth-token',token).send(_.pick(user, ['_id','name','email']));
 }
 
 const userLoginController = async (req, res) => {
-    const token = jwt.sign({_id: req.user._id}, 'jwtPrivateKey');
+    const token = req.user.generateAuthToken();
     res.send(token);
 }
 
