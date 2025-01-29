@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userSignup = async (req, res) => {
     try{
         const user = new User({
-            namename: req.body.username,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password
         });
@@ -14,7 +14,7 @@ const userSignup = async (req, res) => {
         user.password = await bcrypt.hash(user.password, salt);
     
         await user.save();
-        res.status(201).header('x-auth-token',user.generateAuthToken()).send({
+        return res.status(201).header('x-auth-token',user.generateAuthToken()).send({
             id: user._id,
             username: user.username,
             email: user.email,
@@ -24,7 +24,7 @@ const userSignup = async (req, res) => {
         if(error.code === 11000){
             res.status(400).json({error:"Username or email already registered!"});
         }else{
-            res.status(500).json({error:"Internal server error"});
+            res.status(500).json({error: error.message});
         }
     }
   

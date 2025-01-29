@@ -1,3 +1,4 @@
+const userRoutes = require('./routes/user.routes');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const express = require('express');
@@ -5,7 +6,11 @@ const app = express();
 
 connectDB();
 dotenv.config();
+app.use(express.json());
+
 const PORT = process.env.PORT || 5000;
+
+app.use('/api', userRoutes);
 
 try {
     app.listen(PORT, () => {
