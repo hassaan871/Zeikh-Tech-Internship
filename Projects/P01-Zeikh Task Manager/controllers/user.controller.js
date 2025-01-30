@@ -30,7 +30,9 @@ const userSignup = async (req, res) => {
   
 }
 
+const userLoginController = (req, res) => res.status(200).json({jwt_token: req.user.generateAuthToken()});
 
 module.exports = {
-    userSignup
+    userSignup,
+    userLoginController
 }

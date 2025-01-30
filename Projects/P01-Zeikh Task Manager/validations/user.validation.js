@@ -11,13 +11,14 @@ const validateUser = (user) =>{
 
 const validateLoginUser = (user) => {
     const userSchema = Joi.object({
-        username: Joi.string().min(5).required(),
-        email: Joi.string().min(5).required().email(),
+        username: Joi.string().min(5),
+        email: Joi.string().min(5).email(),
         password: Joi.string().min(5).required()
     }).or('email', 'username');
     return userSchema.validate(user);
 }
 
 module.exports = {
-    validateUser
+    validateUser,
+    validateLoginUser
 }
