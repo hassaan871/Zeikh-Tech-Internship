@@ -38,7 +38,23 @@ const searchByHeading = async (req, res) =>{
     }
 }
 
+const deleteTask = async (req, res) => {
+   try {
+     const taskId = req.params.id;
+     const result = await Task.deleteOne({_id:taskId});
+
+     if(result.deletedCount === 0){
+        return res.status(404).json({error: "Task not found"});
+     }
+
+     res.status(200).json({success: "Task deleted successfully"});
+   } catch (error) {
+    res.status(500).json(error);
+   }
+}
+
 module.exports = {
     addTask,
-    searchByHeading
+    searchByHeading,
+    deleteTask
 }
