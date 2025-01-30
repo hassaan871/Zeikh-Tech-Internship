@@ -15,10 +15,6 @@ const validateLoginUserMiddleware = (req, res, next) => {
 }
 
 const validDbUserMiddleware = async (req, res, next) => {
-    //query user from db.
-    //password validation
-    //invalid email or password.
-    //next.
 
     let user;
     

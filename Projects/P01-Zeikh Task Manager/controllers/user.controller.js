@@ -1,7 +1,6 @@
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
-// considering middlewares have validated that the user doesn't exists
 const userSignup = async (req, res) => {
     try{
         const user = new User({
