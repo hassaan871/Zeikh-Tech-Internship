@@ -25,6 +25,20 @@ const addTask = async (req, res) => {
     }
 }
 
+//search the task by heading
+const searchByHeading = async (req, res) =>{
+    try {
+        const task = await Task.find({
+            userId : req.body.userId,
+            heading : req.body.heading
+        });
+        res.status(200).json(task);
+    } catch (error) {
+     res.json(error);   
+    }
+}
+
 module.exports = {
-    addTask
+    addTask,
+    searchByHeading
 }
