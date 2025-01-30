@@ -26,7 +26,6 @@ const userSignup = async (req, res) => {
             res.status(500).json({error: error.message});
         }
     }
-  
 }
 
 const userLoginController = (req, res) => res.status(200).json({jwt_token: req.user.generateAuthToken()});
