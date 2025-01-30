@@ -1,7 +1,7 @@
 const { userSignup, userLoginController } = require('../controllers/user.controller');
 const { validateUserMiddleware, validateLoginUserMiddleware, validDbUserMiddleware } = require('../middlewares/user.middlewares');
 const  auth  = require('../middlewares/auth.middleware');
-const { addTask, searchByHeading, deleteTask, getAllTasks, getCompletedTasks, getInCompletedTasks } = require('../controllers/task.controller');
+const { addTask, searchByHeading, deleteTask, getAllTasks, getCompletedTasks, getInCompletedTasks, updateTask } = require('../controllers/task.controller');
 const express = require('express');
 const router = express.Router();
 
@@ -15,5 +15,6 @@ router.delete('/delete-task/:id', auth, deleteTask);
 router.get('/get-all-tasks', auth, getAllTasks);
 router.get('/get-completed-tasks', auth, getCompletedTasks);
 router.get('/get-incompleted-tasks', auth, getInCompletedTasks);
+router.put('/update-task/:id', auth, updateTask);
 
 module.exports = router;

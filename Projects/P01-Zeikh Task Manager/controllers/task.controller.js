@@ -101,12 +101,27 @@ const getInCompletedTasks = async (req, res) => {
     }
 }
 
+const updateTask = async (req, res) => {
+    try {
+        const taskId = req.params.id;
+        const result = await Task.findOne({_id : taskId});
+
+        if(!result) return res.status(404).json({empty: "No task found!"});
+
+        // if(req.body.heading) 
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
 module.exports = {
     addTask,
     searchByHeading,
     deleteTask,
     getAllTasks,
     getCompletedTasks,
-    getInCompletedTasks
+    getInCompletedTasks,
+    updateTask
 
 }
