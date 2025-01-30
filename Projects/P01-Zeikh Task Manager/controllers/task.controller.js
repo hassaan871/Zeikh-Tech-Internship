@@ -103,13 +103,7 @@ const getInCompletedTasks = async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
-        const taskId = req.params.id;
-        const result = await Task.findOne({_id : taskId});
-
-        if(!result) return res.status(404).json({empty: "No task found!"});
-
-        // if(req.body.heading) 
-
+        return res.status(200).json(req.body.task);
     } catch (error) {
         res.status(500).json(error);
     }
