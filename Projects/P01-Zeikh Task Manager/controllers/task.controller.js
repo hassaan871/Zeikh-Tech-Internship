@@ -56,9 +56,12 @@ const deleteTask = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
     try{
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 3;
+        const skip = (page - 1)*limit;      
         const tasks = await Task.find({
             userId: req.body.userId
-        });
+        }).skip(skip).limit(limit);
         if(!tasks) return res.status(200).json({empty: "No task found"});
         return res.status(200).json(tasks);
     }catch(error){
@@ -68,10 +71,13 @@ const getAllTasks = async (req, res) => {
 
 const getCompletedTasks = async (req, res) => {
     try {
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 3;
+        const skip = (page - 1)*limit;
         const tasks = await Task.find({
             userId: req.body.userId,
             isCompleted: true
-        });
+        }).skip(skip).limit(limit);
         if(!tasks) return res.status(200).json({empty: "No completed task"});
         return res.status(200).json(tasks);
     } catch (error) {
@@ -81,10 +87,13 @@ const getCompletedTasks = async (req, res) => {
 
 const getInCompletedTasks = async (req, res) => {
     try {
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 3;
+        const skip = (page - 1)*limit;
         const tasks = await Task.find({
             userId: req.body.userId,
             isCompleted: false
-        });
+        }).skip(skip).limit(limit);
         if(!tasks) return res.status(200).json({empty: "No incomplete task"});
         return res.status(200).json(tasks);
     } catch (error) {
