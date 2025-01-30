@@ -5,7 +5,8 @@ const addTask = async (req, res) => {
         const task = new Task({
             userId: req.body.userId,
             heading: req.body.heading,
-            description: req.body.description   
+            description: req.body.description,
+            isCompleted: req.body.isCompleted === true ? req.body.isCompleted : undefined
         });
 
         await task.save();
@@ -32,7 +33,7 @@ const searchByHeading = async (req, res) =>{
             userId : req.body.userId,
             heading : req.body.heading
         });
-        res.status(200).json(task);
+        return res.status(200).json(task);
     } catch (error) {
      res.json(error);   
     }
@@ -53,8 +54,50 @@ const deleteTask = async (req, res) => {
    }
 }
 
+const getAllTasks = async (req, res) => {
+    try{
+        const tasks = await Task.find({
+            userId: req.body.userId
+        });
+        if(!tasks) return res.status(200).json({empty: "No task found"});
+        return res.status(200).json(tasks);
+    }catch(error){
+        return res.status(500).json(error);
+    }
+}
+
+const getCompletedTasks = async (req, res) => {
+    try {
+        const tasks = await Task.find({
+            userId: req.body.userId,
+            isCompleted: true
+        });
+        if(!tasks) return res.status(200).json({empty: "No completed task"});
+        return res.status(200).json(tasks);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
+const getInCompletedTasks = async (req, res) => {
+    try {
+        const tasks = await Task.find({
+            userId: req.body.userId,
+            isCompleted: false
+        });
+        if(!tasks) return res.status(200).json({empty: "No incomplete task"});
+        return res.status(200).json(tasks);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 module.exports = {
     addTask,
     searchByHeading,
-    deleteTask
+    deleteTask,
+    getAllTasks,
+    getCompletedTasks,
+    getInCompletedTasks
+
 }
