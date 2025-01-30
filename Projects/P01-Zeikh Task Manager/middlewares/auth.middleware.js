@@ -5,10 +5,10 @@ const auth = (req, res, next) => {
     if(!token) return res.status(401).json({error: "Access denied. No token provided"});
     try{
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        req.user = decoded;
+        req.body.userId = decoded._id;
         next();
     }catch(ex){
-        res.json({error: "Invalid token"});
+        res.json({error: "Invalid token", exception: ex});
     }
 }
 
