@@ -21,7 +21,8 @@ const validDbUserMiddleware = async (req, res, next) => {
     if(req.body.email) user = await User.findOne({email: req.body.email});
     if(req.body.username) user = await User.findOne({username: req.body.username});
 
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    // const validPassword = await bcrypt.compare(req.body.password, user.password);
+    const validPassword = req.body.password === user.password ? true : false; 
 
     if(!user || !validPassword) return res.status(401).json({error: "Invalid email or password!"});
 

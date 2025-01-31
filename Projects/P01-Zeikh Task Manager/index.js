@@ -1,5 +1,6 @@
 const userRoutes = require('./routes/user.routes');
 const taskRoutes = require('./routes/task.routes');
+const adminRotues = require('./routes/admin.routes');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const express = require('express');
@@ -13,7 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 5000;
 
 app.use('/api', userRoutes);
-app.use('/api/tasks/', taskRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/admin', adminRotues);
 
 try {
     app.listen(PORT, () => {
