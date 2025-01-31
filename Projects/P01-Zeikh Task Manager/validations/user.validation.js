@@ -18,7 +18,31 @@ const validateLoginUser = (user) => {
     return userSchema.validate(user);
 }
 
+const validateUsername = (username) =>{
+    const userSchema = Joi.object({
+        username:Joi.string().min(5).required()
+    });
+    return userSchema.validate(username);
+}
+
+const validateEmail = (email) =>{
+    const userSchema = Joi.object({
+        email:Joi.string().min(5).required().email()
+    });
+    return userSchema.validate(email);
+}
+
+const validatePassword = (password) =>{
+    const passwordSchema = Joi.object({
+        password: Joi.string().min(5).required()
+    });
+    return passwordSchema.validate(password);
+}
+
 module.exports = {
     validateUser,
-    validateLoginUser
+    validateLoginUser,
+    validateUsername,
+    validatePassword,
+    validateEmail
 }

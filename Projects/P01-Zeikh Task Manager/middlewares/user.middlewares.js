@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
-const { validateUser, validateLoginUser } = require('../validations/user.validation');
+const { validateUser, validateLoginUser, validateUsername, validatePassword, validateEmail } = require('../validations/user.validation');
 
 const validateUserMiddleware = (req, res, next) => {
     const { error } = validateUser(req.body);
@@ -30,8 +30,29 @@ const validDbUserMiddleware = async (req, res, next) => {
     next();
 }
 
+const validateUsernameMiddleware = (req, res, next) => {
+    const {error} = validateUsername(req.body);
+    if (error) return res.status(400).json({error: error.details[0].message});
+    next();
+}
+
+const validateEmailMiddleware = (req, res, next) => {
+    const {error} = validateEmail(req.body);
+    if (error) return res.status(400).json({error: error.details[0].message});
+    next();
+}
+
+const validatePasswordMiddleware = (req, res, next) => {
+    const {error} = validatePassword(req.body);
+    if (error) return res.status(400).json({error: error.details[0].message});
+    next();
+}
+
 module.exports = {
     validateUserMiddleware,
     validateLoginUserMiddleware,
-    validDbUserMiddleware
+    validDbUserMiddleware,
+    validateUsernameMiddleware,
+    validateEmailMiddleware,
+    validatePasswordMiddleware
 }
