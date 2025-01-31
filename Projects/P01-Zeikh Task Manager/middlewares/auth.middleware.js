@@ -6,6 +6,7 @@ const auth = (req, res, next) => {
     try{
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.body.userId = decoded._id;
+        req.body.isAdmin = decoded.isAdmin;
         next();
     }catch(ex){
         res.json({error: "Invalid token", exception: ex});
