@@ -2,7 +2,12 @@ const User = require('../models/user.model');
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find({isAdmin: false});
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 3;
+        const skip = (page-1)*limit;
+
+        const users = await User.find({isAdmin: false}).skip(skip).limit(limit);
+        
         if(!users) return res.status(404).json({empty: "no user found"});
         return res.status(200).json(users);
     } catch (error) {
