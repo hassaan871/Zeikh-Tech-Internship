@@ -17,7 +17,20 @@ const getAllUsers = async (req, res) => {
 
 const getUserByName = async (req, res) =>{
     try {
+        if(!req.body.username) return res.status(400).json({error: "username is required."});
         const user = await User.findOne({username: req.body.username });
+        if(!user) return res.status(404).json({empty: "no user found"});
+        return res.status(200).json(user);
+
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
+const getUserByEmail = async (req, res) =>{
+    try {
+        if(!req.body.email) return res.status(400).json({error: "email is required."});
+        const user = await User.findOne({email: req.body.email });
         if(!user) return res.status(404).json({empty: "no user found"});
         return res.status(200).json(user);
 
@@ -28,5 +41,6 @@ const getUserByName = async (req, res) =>{
 
 module.exports = {
     getAllUsers,
-    getUserByName
+    getUserByName,
+    getUserByEmail
 }
