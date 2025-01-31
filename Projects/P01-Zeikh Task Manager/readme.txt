@@ -11,3 +11,10 @@ get all Tasks: http://localhost:PORT/api/tasks/get-all-task/
 get completed Tasks: http://localhost:PORT/api/tasks/get-completed-task/
 get incompleted Tasks: http://localhost:PORT/api/tasks/get-incompleted-task/
 update task: http://localhost:8000/api/tasks/update-task/:id
+
+
+//Admin 
+get all users: http://localhost:PORT/api/admin/get-all-users
+get user by email: http://localhost:PORT/api/admin/get-user-by-email
+get user by name: http://localhost:PORT/api/admin/get-user-by-name
+delete-user: http://localhost:8000/api/admin/delete-user
