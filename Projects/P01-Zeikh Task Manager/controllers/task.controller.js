@@ -44,13 +44,11 @@ const deleteTask = async (req, res) => {
      const taskId = req.params.id;
      const result = await Task.deleteOne({_id:taskId});
 
-     if(result.deletedCount === 0){
-        return res.status(404).json({error: "Task not found"});
-     }
+     if(result.deletedCount === 0) return res.status(404).json({error: "Task not found"});
 
-     res.status(200).json({success: "Task deleted successfully"});
+     return res.status(200).json({success: "Task deleted successfully"});
    } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
    }
 }
 

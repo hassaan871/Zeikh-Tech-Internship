@@ -39,8 +39,22 @@ const getUserByEmail = async (req, res) =>{
     }
 }
 
+const deleteUser = async (req, res) =>{
+    try {
+        const taskId = req.params.id;
+        const result = await User.deleteOne({_id:taskId});
+
+        if(result.deletedCount === 0) return res.status(404).json({error: "User not found"});
+
+        return res.status(200).json({success: "User deleted successfully"});
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserByName,
-    getUserByEmail
+    getUserByEmail,
+    deleteUser
 }
