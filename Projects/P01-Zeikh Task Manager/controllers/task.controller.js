@@ -31,7 +31,7 @@ const searchByHeading = async (req, res) =>{
     try {
         const task = await Task.find({
             userId : req.body.userId,
-            heading : req.body.heading
+            heading : req.query.heading
         });
         return res.status(200).json(task);
     } catch (error) {

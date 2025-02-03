@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Protected Routes
 router.post('/add-task', auth, addTask);
-router.post('/search-by-heading', auth, searchByHeading);
+router.get('/search-by-heading', auth, searchByHeading);
 router.delete('/delete-task/:id', auth, deleteTask);
 router.get('/get-all-tasks', auth, getAllTasks);
 router.get('/get-completed-tasks', auth, getCompletedTasks);
