@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const user = new mongoose.Schema({
+    // todo add name first and last
     username:{
         type: String,
         required: true,
