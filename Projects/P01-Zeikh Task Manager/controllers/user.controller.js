@@ -56,7 +56,7 @@ const updateEmailController = async (req, res) => {
         const user = await User.findById(req.body.userId);
         user.email = req.body.email;
         user.save();
-        return res.status(200).json({id:user._id, username: user.username, email: user.email });
+        return res.status(200).json({id:user._id, firstname: user.firstname, lastname: user.lastname,username: user.username, email: user.email });
     } catch (error) {
         return res.status(500).json(error);
     }
