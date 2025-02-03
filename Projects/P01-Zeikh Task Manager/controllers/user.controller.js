@@ -41,14 +41,14 @@ const userLoginController = (req, res) => {
 }
 
 const updateUsernameController = async (req, res) => { 
-    try {
+    // try {
         const user = await User.findById(req.body.userId);
         user.username = req.body.username;
         user.save();
-        return res.status(200).json({id:user._id, username: user.username, email: user.email });
-    } catch (error) {
-        return res.status(500).json(error);
-    }
+        return res.status(200).json({id:user._id,firstname: user.firstname, lastname:user.lastname, username: user.username, email: user.email });
+    // } catch (error) {
+    //     return res.status(500).json(error);
+    // }
 }
 
 const updateEmailController = async (req, res) => { 

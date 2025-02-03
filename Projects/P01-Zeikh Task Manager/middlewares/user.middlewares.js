@@ -38,8 +38,9 @@ const validDbUserMiddleware = async (req, res, next) => {
 }
 
 const validateUsernameMiddleware = (req, res, next) => {
-    const { error } = validateUsername(req.body);
-    if (error) return res.status(400).json({ error: error.details[0].message });
+    if(!req.body.username) return res.status(400).json({error: "username required"})
+    const { error } = validateUsername({"username": req.body.username});
+    if (error) return res.status(400).json({ error: error.details[0] });
     next();
 }
 
