@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
-const { validateUser, validateLoginUser, validateUsername, validatePassword, validateEmail } = require('../validations/user.validation');
+const { validateUser, validateLoginUser, validateFirstname, validateLastname, validateUsername, validatePassword, validateEmail } = require('../validations/user.validation');
 
 const validateUserMiddleware = (req, res, next) => {
     const { error } = validateUser(req.body);
@@ -50,6 +50,18 @@ const validateEmailMiddleware = (req, res, next) => {
     next();
 }
 
+const validateFirstnameMiddleware = (req, res, next) => {
+    const {error} = validateFirstname({"firstname": req.body.firstname});
+    if (error) return res.status(400).json({error: error.details[0].message });
+    next();
+}
+
+const validateLastnameMiddleware = (req, res, next) => {
+    const {error} = validateLastname({"lastname": req.body.lastname});
+    if(error) return res.status(400).json({error: error.details[0].message});
+    next();
+}
+
 const validatePasswordMiddleware = (req, res, next) => {
     const { error } = validatePassword({"password":req.body.password});
     if (error) return res.status(400).json({ error: error.details[0].message });
@@ -61,6 +73,8 @@ module.exports = {
     validateLoginUserMiddleware,
     validDbUserMiddleware,
     validateUsernameMiddleware,
+    validateFirstnameMiddleware,
+    validateLastnameMiddleware,
     validateEmailMiddleware,
     validatePasswordMiddleware
 }

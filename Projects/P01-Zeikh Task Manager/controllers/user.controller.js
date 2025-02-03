@@ -51,6 +51,28 @@ const updateUsernameController = async (req, res) => {
     // }
 }
 
+const updateFirstNameController = async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+        user.firstname = req.body.firstname;
+        user.save();
+        return res.status(200).json({id:user._id, firstname: user.firstname, lastname: user.lastname,username: user.username, email: user.email });
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
+const updateLastNameController = async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+        user.lastname = req.body.lastname;
+        user.save();
+        return res.status(200).json({id:user._id, firstname: user.firstname, lastname: user.lastname,username: user.username, email: user.email });
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 const updateEmailController = async (req, res) => { 
     try {
         const user = await User.findById(req.body.userId);
@@ -79,5 +101,7 @@ module.exports = {
     userLoginController,
     updateUsernameController,
     updateEmailController,
-    updatePasswordController
+    updatePasswordController,
+    updateFirstNameController,
+    updateLastNameController
 }
