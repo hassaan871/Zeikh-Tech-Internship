@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const userSignup = async (req, res) => {
     try{
         const user = new User({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             username: req.body.username,
             email: req.body.email,
             password: req.body.password
@@ -15,6 +17,8 @@ const userSignup = async (req, res) => {
         await user.save();
         return res.status(201).header('x-auth-token',user.generateAuthToken()).json({
             id: user._id,
+            firstname: user.firstname,
+            lastname: user.lastname,
             username: user.username,
             email: user.email,
         });
@@ -28,7 +32,13 @@ const userSignup = async (req, res) => {
     }
 }
 
-const userLoginController = (req, res) => res.status(200).json({jwt_token: req.user.generateAuthToken()});
+const userLoginController = (req, res) => {
+    try {
+        return res.status(200).json({jwt_token: req.user.generateAuthToken()});
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
 
 const updateUsernameController = async (req, res) => { 
     try {
