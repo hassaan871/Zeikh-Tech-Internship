@@ -10,17 +10,17 @@ const user = new mongoose.Schema({
         type: String,
         required: true
     },
-    username:{
+    username: {
         type: String,
         required: true,
         unique: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true,
     },
@@ -30,8 +30,8 @@ const user = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-user.methods.generateAuthToken = function(){
-    return jwt.sign({_id:this._id, isAdmin: this.isAdmin},process.env.JWT_SECRET_KEY);
+user.methods.generateAuthToken = function () {
+    return jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, process.env.JWT_SECRET_KEY);
 }
 
 const User = mongoose.model('User', user);

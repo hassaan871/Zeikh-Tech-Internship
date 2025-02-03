@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const validateUser = (user) =>{
+const validateUser = (user) => {
     const userSchema = Joi.object({
         firstname: Joi.string().min(1).required(),
         lastname: Joi.string().min(1).required(),
@@ -27,28 +27,28 @@ const validateFirstname = (firstname) => {
     return firstnameSchema.validate(firstname);
 }
 
-const validateLastname = (lastname) =>{
+const validateLastname = (lastname) => {
     const lastnameSchema = Joi.object({
         lastname: Joi.string().min(1).required()
     });
     return lastnameSchema.validate(lastname);
 }
 
-const validateUsername = (username) =>{
+const validateUsername = (username) => {
     const usernameSchema = Joi.object({
-        username:Joi.string().min(5).required()
+        username: Joi.string().min(5).required()
     });
     return usernameSchema.validate(username);
 }
 
-const validateEmail = (email) =>{
+const validateEmail = (email) => {
     const emailSchema = Joi.object({
-        email:Joi.string().min(5).required().email()
+        email: Joi.string().min(5).required().email()
     });
     return emailSchema.validate(email);
 }
 
-const validatePassword = (password) =>{
+const validatePassword = (password) => {
     const passwordSchema = Joi.object({
         password: Joi.string().min(5).required()
     });

@@ -1,4 +1,4 @@
-const { userSignup, userLoginController, updateUsernameController, updateFirstNameController, updateLastNameController, updateEmailController,updatePasswordController } = require('../controllers/user.controller');
+const { userSignup, userLoginController, updateUsernameController, updateFirstNameController, updateLastNameController, updateEmailController, updatePasswordController } = require('../controllers/user.controller');
 const { validateUserMiddleware, validateLoginUserMiddleware, validateFirstnameMiddleware, validateLastnameMiddleware, validDbUserMiddleware, validateUsernameMiddleware, validateEmailMiddleware, validatePasswordMiddleware } = require('../middlewares/user.middlewares');
 const auth = require('../middlewares/auth.middleware');
 const express = require('express');
