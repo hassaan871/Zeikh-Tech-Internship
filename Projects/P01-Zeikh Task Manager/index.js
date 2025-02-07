@@ -1,13 +1,14 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const userRoutes = require('./routes/user.routes');
 const taskRoutes = require('./routes/task.routes');
 const adminRotues = require('./routes/admin.routes');
 const connectDB = require('./config/db');
-const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
 
 connectDB();
-dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
